@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTX en Argentina: Un Pilar de la Industria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices:
+    - BTX Definition: Text + HTML/CSS simple molecular representations. Goal: Inform.
+    - Importance/Uses: Text + Interactive Card Grid (hover for details on derived products). Goal: Inform/Engage.
+    - Obtention Processes: Text + Simplified HTML/CSS flow diagrams. Goal: Organize/Inform.
+    - Production Actors: Text. Goal: Inform.
+    - Value Chains: Text + Interactive HTML/CSS flow diagrams. Goal: Relationships/Organize.
+    - Future: Text list. Goal: Inform.
+    - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. All diagrams are HTML/CSS. Chart.js/Plotly.js not applicable as no quantitative data for charts. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Tailwind usa Inter por defecto, pero es bueno declararlo */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-amber-700 mb-6 text-center;
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold text-sky-700 mb-4 mt-6;
+        }
+        .card {
+            @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .pill-button {
+            @apply px-6 py-2 bg-sky-700 text-white rounded-full hover:bg-sky-800 transition-colors duration-300 text-sm font-semibold;
+        }
+        /* Estructuras moleculares muy simplificadas */
+        .benzene-ring {
+            @apply w-12 h-14 border-2 border-neutral-700 rounded-md relative mx-auto;
+        }
+        .benzene-ring::before, .benzene-ring::after {
+            content: '';
+            @apply absolute border-t-2 border-neutral-700;
+            width: 50%;
+            top: 30%;
+            left: 25%;
+        }
+        .benzene-ring::after {
+            top: 60%;
+        }
+        .methyl-group {
+            @apply absolute w-3 h-3 bg-neutral-700 rounded-full -top-2;
+        }
+        .molecule-container {
+            @apply flex flex-col items-center p-4 text-center;
+        }
+        /* Animación suave para scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+         /* Estilo para el modal */
+        .modal {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 transition-opacity duration-300 opacity-0 pointer-events-none;
+        }
+        .modal-content {
+            @apply bg-white p-8 rounded-lg shadow-2xl max-w-md w-full transform scale-95 transition-transform duration-300;
+        }
+        .modal.active {
+            @apply opacity-100 pointer-events-auto;
+        }
+        .modal.active .modal-content {
+            @apply scale-100;
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-neutral-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-amber-700">BTX en Argentina</h1>
+            <div class="space-x-4">
+                <a href="#inicio" class="text-neutral-700 hover:text-sky-700 font-medium">Inicio</a>
+                <a href="#proceso" class="text-neutral-700 hover:text-sky-700 font-medium">El Proceso</a>
+                <a href="#produccion" class="text-neutral-700 hover:text-sky-700 font-medium">Producción Nacional</a>
+                <a href="#futuro" class="text-neutral-700 hover:text-sky-700 font-medium">Futuro</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+
+        <section id="inicio" class="py-12">
+            <h2 class="section-title">¿Qué son los BTX y su Impacto Estratégico?</h2>
+            <p class="text-lg text-center mb-8 max-w-3xl mx-auto">
+                BTX es el acrónimo de Benceno, Tolueno y Xilenos, compuestos aromáticos básicos que actúan como los "ladrillos" químicos esenciales para una vasta gama de industrias y productos de uso cotidiano.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12 text-center">
+                <div class="card molecule-container">
+                    <h3 class="text-xl font-semibold text-sky-700 mb-2">Benceno (B)</h3>
+                    <div class="benzene-ring"></div>
+                    <p class="mt-2 text-sm text-neutral-600">Un anillo de 6 carbonos, fundamental para plásticos y resinas.</p>
+                </div>
+                <div class="card molecule-container">
+                    <h3 class="text-xl font-semibold text-sky-700 mb-2">Tolueno (T)</h3>
+                    <div class="benzene-ring">
+                        <div class="methyl-group" style="left: calc(50% - 0.375rem);"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-neutral-600">Benceno con un grupo metilo, usado en solventes y explosivos.</p>
+                </div>
+                <div class="card molecule-container">
+                    <h3 class="text-xl font-semibold text-sky-700 mb-2">Xilenos (X)</h3>
+                    <div class="benzene-ring">
+                        <div class="methyl-group" style="left: calc(50% - 0.375rem);"></div>
+                        <div class="methyl-group" style="left: 0; top: calc(30% - 0.375rem);"></div>
+                    </div>
+                    <p class="mt-2 text-sm text-neutral-600">Benceno con dos grupos metilo, base para fibras de poliéster.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title text-center">Importancia y Usos de los BTX</h3>
+            <p class="text-center mb-8 max-w-2xl mx-auto">La disponibilidad de BTX es clave para el funcionamiento de múltiples industrias en Argentina, impactando directamente en la producción de:</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card product-card" data-info="El poliestireno (PS), derivado del benceno, se usa en envases, juguetes y aislantes.">
+                    <h4 class="font-semibold text-lg mb-2">Plásticos</h4>
+                    <p class="text-sm text-neutral-600">Envases, componentes automotrices, juguetes (ej. Poliestireno).</p>
+                </div>
+                <div class="card product-card" data-info="Fibras como el poliéster (derivado de xilenos) se usan en ropa y textiles para el hogar.">
+                    <h4 class="font-semibold text-lg mb-2">Fibras Sintéticas</h4>
+                    <p class="text-sm text-neutral-600">Ropa, alfombras, textiles técnicos (ej. Poliéster).</p>
+                </div>
+                <div class="card product-card" data-info="El tolueno es un solvente común en pinturas, barnices y adhesivos.">
+                    <h4 class="font-semibold text-lg mb-2">Pinturas y Solventes</h4>
+                    <p class="text-sm text-neutral-600">Recubrimientos, adhesivos, diluyentes.</p>
+                </div>
+                <div class="card product-card" data-info="Muchos detergentes utilizan alquilbencenosulfonatos, derivados del benceno.">
+                    <h4 class="font-semibold text-lg mb-2">Detergentes</h4>
+                    <p class="text-sm text-neutral-600">Productos de limpieza para el hogar e industriales.</p>
+                </div>
+                 <div class="card product-card" data-info="El benceno y tolueno son precursores de muchos compuestos farmacéuticos.">
+                    <h4 class="font-semibold text-lg mb-2">Productos Farmacéuticos</h4>
+                    <p class="text-sm text-neutral-600">Medicamentos y principios activos.</p>
+                </div>
+                 <div class="card product-card" data-info="El caucho sintético, como el SBR (estireno-butadieno), usa estireno derivado del benceno.">
+                    <h4 class="font-semibold text-lg mb-2">Caucho Sintético</h4>
+                    <p class="text-sm text-neutral-600">Neumáticos, suelas de zapatos, selladores.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso" class="py-12 bg-white rounded-xl shadow-lg">
+            <h2 class="section-title">El Viaje de los BTX: De la Refinería al Producto</h2>
+            <p class="text-lg text-center mb-8 max-w-3xl mx-auto">
+                En Argentina, la principal materia prima para obtener BTX es el petróleo crudo. Estos valiosos aromáticos se extraen y refinan a través de procesos petroquímicos complejos.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title">Reformado Catalítico</h3>
+                    <p class="text-neutral-700 mb-4">Es la vía más significativa. Este proceso transforma naftas (fracciones ligeras del petróleo) de bajo índice de octano en una mezcla rica en compuestos aromáticos, incluyendo Benceno, Tolueno y Xilenos. El objetivo principal es mejorar la calidad de la nafta como combustible, pero los aromáticos obtenidos son cruciales para la petroquímica.</p>
+                    <div class="p-4 border border-sky-200 rounded-md bg-sky-50">
+                        <p class="font-semibold text-sky-700">Flujo Simplificado:</p>
+                        <p class="text-sm">Naftas de Bajo Octanaje ➔ <span class="font-bold text-emerald-700">Catalizador y Alta Temperatura</span> ➔ Compuestos Aromáticos (BTX) + Nafta de Alto Octanaje</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title">Pirólisis (Cracking)</h3>
+                    <p class="text-neutral-700 mb-4">Aunque su objetivo principal es la producción de olefinas ligeras como etileno y propileno (bases para muchos plásticos), la pirólisis (o cracking con vapor) de naftas o gasóleos también genera una corriente líquida rica en aromáticos, que incluye BTX como valiosos subproductos.</p>
+                     <div class="p-4 border border-sky-200 rounded-md bg-sky-50">
+                        <p class="font-semibold text-sky-700">Flujo Simplificado:</p>
+                        <p class="text-sm">Naftas/Gasóleos ➔ <span class="font-bold text-emerald-700">Alta Temperatura (Vapor)</span> ➔ Etileno, Propileno + Fracción Aromática (BTX)</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-neutral-700">Una vez generados a través de estos procesos, los aromáticos BTX deben ser separados y purificados mediante técnicas como la destilación extractiva o la extracción líquido-líquido para obtener Benceno, Tolueno y Xilenos con la pureza requerida por la industria.</p>
+        </section>
+
+        <section id="produccion" class="py-12">
+            <h2 class="section-title">BTX en Argentina: Actores Clave y Cadenas de Valor</h2>
+            <p class="text-lg text-center mb-8 max-w-3xl mx-auto">
+                La producción de BTX es un eslabón crucial en la cadena industrial argentina, conectando la refinación de petróleo con la manufactura de una amplia gama de bienes.
+            </p>
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+                <h3 class="subsection-title">Principales Actores y Polos Productivos</h3>
+                <p class="text-neutral-700 mb-4">La producción de BTX en Argentina se concentra en las grandes refinerías petroquímicas del país. El principal actor y productor histórico es <span class="font-bold text-sky-700">YPF</span>, especialmente en su <span class="font-semibold">Complejo Industrial de La Plata (CILP)</span>. Este complejo es el corazón de la producción de aromáticos en Argentina y un polo petroquímico fundamental.</p>
+                 <div class="my-6 p-4 bg-amber-50 border-l-4 border-amber-600 text-amber-800 rounded-md">
+                    <p><span class="font-bold">Dato Clave:</span> El CILP de YPF no solo produce BTX, sino que también los procesa para obtener derivados, integrando varias etapas de la cadena de valor petroquímica.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title text-center">Cadenas de Valor y Valor Agregado</h3>
+            <p class="text-center mb-8 max-w-2xl mx-auto">La producción nacional de BTX es vital porque alimenta directamente diversas cadenas de valor, generando desarrollo industrial local y sustituyendo importaciones:</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card value-chain-card" data-product="Poliestireno, Nylon, Resinas Fenólicas">
+                    <h4 class="font-semibold text-lg mb-2 text-emerald-700">Benceno</h4>
+                    <p class="text-sm text-neutral-600">➔ Estireno ➔ Poliestireno (envases, aislantes)</p>
+                    <p class="text-sm text-neutral-600">➔ Cumeno ➔ Fenol y Acetona (resinas, solventes)</p>
+                    <p class="text-sm text-neutral-600">➔ Ciclohexano ➔ Ácido Adípico y Caprolactama (Nylon)</p>
+                </div>
+                <div class="card value-chain-card" data-product="Solventes, TDI (Poliuretanos), Ácido Benzoico">
+                    <h4 class="font-semibold text-lg mb-2 text-emerald-700">Tolueno</h4>
+                    <p class="text-sm text-neutral-600">➔ Uso directo como Solvente (pinturas, adhesivos)</p>
+                    <p class="text-sm text-neutral-600">➔ Diisocianato de Tolueno (TDI) ➔ Poliuretanos (espumas, aislantes)</p>
+                    <p class="text-sm text-neutral-600">➔ Ácido Benzoico (conservantes)</p>
+                </div>
+                <div class="card value-chain-card" data-product="Fibras de Poliéster (PET), Resinas Alquídicas, Solventes">
+                    <h4 class="font-semibold text-lg mb-2 text-emerald-700">Xilenos (mezcla y p-Xileno)</h4>
+                    <p class="text-sm text-neutral-600">➔ para-Xileno ➔ Ácido Tereftálico (PTA) / DMT ➔ PET (botellas, fibras textiles)</p>
+                    <p class="text-sm text-neutral-600">➔ orto-Xileno ➔ Anhídrido Ftálico (plastificantes, resinas)</p>
+                    <p class="text-sm text-neutral-600">➔ Uso como Solvente</p>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-neutral-700">Esta transformación de materias primas básicas en productos de mayor complejidad demuestra cómo la producción de BTX genera un significativo <span class="font-semibold">valor agregado</span> dentro del país.</p>
+        </section>
+
+        <section id="futuro" class="py-12 bg-sky-800 text-white rounded-xl shadow-lg">
+             <h2 class="section-title !text-amber-400">Mirando al Futuro: Desafíos y Oportunidades</h2>
+            <p class="text-lg text-center mb-8 max-w-3xl mx-auto text-sky-100">
+                La industria de BTX, si bien es fundamental, enfrenta un panorama global y local en constante evolución.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-sky-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold text-white mb-3">Desafíos Actuales</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sky-50">
+                        <li>Volatilidad de los precios internacionales del petróleo, su principal materia prima.</li>
+                        <li>Necesidad de inversiones continuas para mantener y modernizar la capacidad productiva.</li>
+                        <li>Creciente demanda por procesos más sostenibles y con menor impacto ambiental.</li>
+                        <li>Competencia de productores internacionales con economías de escala.</li>
+                    </ul>
+                </div>
+                 <div class="bg-sky-700 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold text-white mb-3">Oportunidades para Argentina</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sky-50">
+                        <li>Optimización de los procesos existentes para mejorar la eficiencia y reducir costos.</li>
+                        <li>Integración de nuevas tecnologías que permitan una producción más limpia.</li>
+                        <li>Desarrollo de cadenas de valor aguas abajo para maximizar el valor agregado local.</li>
+                        <li>A largo plazo, exploración de fuentes alternativas para aromáticos, como la biomasa o el reciclaje químico de plásticos (aún en etapas tempranas de desarrollo a gran escala).</li>
+                        <li>Aprovechamiento de los recursos de Vaca Muerta para asegurar materia prima.</li>
+                    </ul>
+                </div>
+            </div>
+             <p class="mt-10 text-center text-xl font-semibold text-amber-300">
+                En resumen, la obtención de Benceno, Tolueno y Xilenos en Argentina no es solo un proceso químico, sino un motor estratégico que impulsa la autonomía y el crecimiento económico de nuestra industria nacional.
+            </p>
+            <p class="mt-4 text-center text-sky-100">Es un sector fundamental, aunque a menudo invisible, para la vida cotidiana y la economía del país.</p>
+        </section>
+    </main>
+
+    <footer class="bg-neutral-800 text-white text-center p-6 mt-12">
+        <p>&copy; 2025 Aplicación Interactiva BTX Argentina. Contenido basado en la presentación proporcionada.</p>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle" class="text-2xl font-bold text-sky-700 mb-4"></h3>
+            <p id="modalInfo" class="text-neutral-700 mb-6"></p>
+            <button id="closeModal" class="pill-button">Cerrar</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navegación suave para anclas
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Modal para tarjetas de productos
+            const productCards = document.querySelectorAll('.product-card');
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalInfo = document.getElementById('modalInfo');
+            const closeModalButton = document.getElementById('closeModal');
+
+            productCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('h4').innerText;
+                    const info = card.dataset.info;
+                    
+                    modalTitle.innerText = title;
+                    modalInfo.innerText = info || "Más información sobre este producto y su relación con BTX.";
+                    modal.classList.add('active');
+                });
+            });
+
+            const closeAndResetModal = () => {
+                modal.classList.remove('active');
+            }
+
+            closeModalButton.addEventListener('click', closeAndResetModal);
+            
+            // Cerrar modal al hacer clic fuera del contenido
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeAndResetModal();
+                }
+            });
+
+             // Cerrar modal al presionar Escape
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    closeAndResetModal();
+                }
+            });
+
+            // Interacción para tarjetas de cadena de valor (ejemplo simple)
+            const valueChainCards = document.querySelectorAll('.value-chain-card');
+            valueChainCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('bg-amber-50'); // Un ligero resaltado al pasar el mouse
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('bg-amber-50');
+                });
+                 card.addEventListener('click', () => {
+                    const productExamples = card.dataset.product;
+                    modalTitle.innerText = card.querySelector('h4').innerText + " - Productos Derivados";
+                    modalInfo.innerText = productExamples ? `Ejemplos clave incluyen: ${productExamples}. Estos demuestran la versatilidad y el impacto industrial de este BTX.` : "Este componente BTX es crucial para diversas aplicaciones industriales.";
+                    modal.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
